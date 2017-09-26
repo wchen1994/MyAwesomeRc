@@ -99,7 +99,7 @@ local is_dark_bg = (bg_numberic_value < 383)
 -- end
 local awful = require("awful")
 local path_wallpaper = "~/.config/awesome/themes/my/wallpapers/"
-wp_files = {"01.jpg", "02.jpg", "03.jpg", "04.jpg"}
+wp_files = {"01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"}
 wp_index = 1
 -- theme.wallpaper = path_wallpaper .. "04.jpg"
 theme.wallpaper = function(s)
