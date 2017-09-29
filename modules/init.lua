@@ -1,3 +1,4 @@
 return {
-    wallpaper = require("modules.wallpaper")
+    wallpaper = require("wallpaper")
+	taskbar = require("taskbar")
 }

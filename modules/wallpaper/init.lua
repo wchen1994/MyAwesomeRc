@@ -52,7 +52,7 @@ end)
 screen.connect_signal("tag::history::update", function() wp_timer:start() end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
--- screen.connect_signal("property::geometry", m_wallpaper.set_wallpaper)
+screen.connect_signal("property::geometry", m_wallpaper.set_wallpaper)
 -- }}}
 
 return m_wallpaper
