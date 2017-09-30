@@ -91,16 +91,14 @@ local is_dark_bg = (bg_numberic_value < 383)
 local awful = require("awful")
 require("modules.utils")
 
-local cmd = 'ls ' .. 
-	awful.util.getdir("config") .. 
-	'themes/my/wallpapers/'
+local cmd = 'ls ' ..  awful.util.getdir("config") ..  'themes/my/wallpapers/'
 
 wp_files = execute_return_stdout(cmd)
 wp_index = 1
 
 function func_wallpaper_gen(s)
     tmp_index = math.random(1, #wp_files)
-    while( wp_index == tmp_index)
+    while #wp_files > 1 and wp_index == tmp_index
     do
         tmp_index = math.random(1, #wp_files)
     end
@@ -111,5 +109,3 @@ end
 theme.wallpaper = func_wallpaper_gen
 
 return theme
-
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

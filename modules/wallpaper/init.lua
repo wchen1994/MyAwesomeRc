@@ -29,7 +29,7 @@ end
 
 -- {{{ Timer to reset wallpaper
 -- setup the timer
-wp_timer = gears.timer { timeout = 0.5 }
+local wp_timer = gears.timer { timeout = 0.5 }
 wp_timer:connect_signal("timeout", function()
     -- set wallpaper to current index for all screens
     m_wallpaper.set_wallpaper()

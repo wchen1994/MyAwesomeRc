@@ -18,6 +18,7 @@ require("debian.menu")
 dofile(awful.util.getdir("config") .. "/processes/quit_gnome.lua")
 -- Modules
 local m_wallpaper = require("modules.wallpaper")
+local m_tags = require("modules.taskbar.tags")
 
 -- Third Parties
 local volume = require("awesome-volume/volume")
@@ -392,7 +393,7 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 6 do
     globalkeys = awful.util.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
@@ -438,6 +439,12 @@ for i = 1, 9 do
                   {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
+globalkeys = awful.util.table.join(globalkeys,
+    -- toggle tag name style
+	awful.key({ modkey }, "#18",
+	          m_tags.toggle_tagnames,
+			  {description = "toggle tag name style", group = "tag"})
+)
 
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
@@ -498,11 +505,6 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
-
-    { rule = { class = "chrome" },
-    	properties = { screen = 1, tag = "Network" } },
-    { rule = { class = "netease-cloud-music" },
-    	properties = { screen = 1, tag = "Music", titlebars_enabled = false } },
 }
 -- }}}
 
@@ -583,8 +585,9 @@ end
 function change_bg()
     m_wallpaper.set_wallpaper()
 end
+
+function toggle_tagnames()
+	m_tags.toggle_tagnames()
+end
 -- }}}
 
-require("modules.utils")
-out = execute_return_stdout('pwd')
-naughty.notify{text = out[1]}
