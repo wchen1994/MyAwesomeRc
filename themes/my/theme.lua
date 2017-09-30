@@ -88,21 +88,17 @@ end
 local is_dark_bg = (bg_numberic_value < 383)
 
 -- Generate wallpaper:
--- local wallpaper_bg = xrdb.color8
--- local wallpaper_fg = xrdb.color7
--- local wallpaper_alt_fg = xrdb.color12
--- if not is_dark_bg then
---     wallpaper_bg, wallpaper_fg = wallpaper_fg, wallpaper_bg
--- end
--- theme.wallpaper = function(s)
---     return theme_assets.wallpaper(wallpaper_bg, wallpaper_fg, wallpaper_alt_fg, s)
--- end
 local awful = require("awful")
-local path_wallpaper = "~/.config/awesome/themes/my/wallpapers/"
-wp_files = {"01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg"}
+require("modules.utils")
+
+local cmd = 'ls ' .. 
+	awful.util.getdir("config") .. 
+	'themes/my/wallpapers/'
+
+wp_files = execute_return_stdout(cmd)
 wp_index = 1
 
-theme.wallpaper = function(s)
+function func_wallpaper_gen(s)
     tmp_index = math.random(1, #wp_files)
     while( wp_index == tmp_index)
     do
@@ -111,6 +107,8 @@ theme.wallpaper = function(s)
     wp_index = tmp_index
     return awful.util.getdir("config") .. "themes/my/wallpapers/" .. wp_files[wp_index]
 end
+
+theme.wallpaper = func_wallpaper_gen
 
 return theme
 
