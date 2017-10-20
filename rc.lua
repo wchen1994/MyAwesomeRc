@@ -203,7 +203,10 @@ awful.screen.connect_for_each_screen(function(s)
 	awful.tag.add("Terminal",{screen=s, layout=awful.layout.layouts[9]})
 	awful.tag.add("Music",{screen=s, layout=awful.layout.layouts[9]})
 	awful.tag.add("Chat",{screen=s, layout=awful.layout.layouts[9]})
-	awful.tag.add("Showroom",{screen=s, layout=awful.layout.layouts[1]})
+	awful.tag.add("Showroom",{screen=s, layout=awful.layout.layouts[9]})
+	awful.tag.add("Editor",{screen=s, layout=awful.layout.layouts[9]})
+	awful.tag.add("Develop",{screen=s, layout=awful.layout.layouts[9]})
+	m_tags.toggle_tagnames()
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -393,7 +396,7 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 6 do
+for i = 1, 8 do
     globalkeys = awful.util.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,

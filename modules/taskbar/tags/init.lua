@@ -4,7 +4,7 @@ root = require("root")
 
 m_tags = {}
 
-local tag_names = { "Desktop", "Network", "Terminal", "Music", "Chat", "Showroom" }
+local tag_names = { "Desktop", "Network", "Terminal", "Music", "Chat", "Showroom", "Editor", "Develop" }
 local state = 1
 function m_tags.toggle_tagnames()
 	if state >= 2 then state = 0 else state = state + 1 end
