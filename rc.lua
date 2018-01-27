@@ -356,9 +356,13 @@ globalkeys = awful.util.table.join(
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
-    awful.key({}, "XF86AudioRaiseVolume", function() volume_up() end),
-    awful.key({}, "XF86AudioLowerVolume", function() volume_down() end),
-    awful.key({}, "XF86AudioMute",        function() volume_mute() end)
+	-- Volume Control
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_up() end, {description = "volume up", group = "custome"}),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_down() end, {description = "volume down", group = "custome"}),
+    awful.key({}, "XF86AudioMute",        function() volume_mute() end, {description = "volume toggle mute", group = "custome"}),
+	-- TextToTalk
+	awful.key({ modkey, "Shift" }, "t", function() awful.util.spawn("bash -c ~/Scripts/talk_sel.sh") end, 
+              {description = "text to talk", group = "custome"})
 )
 
 clientkeys = awful.util.table.join(
