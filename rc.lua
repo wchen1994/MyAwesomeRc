@@ -22,6 +22,7 @@ local m_tags = require("modules.taskbar.tags")
 
 -- Third Parties
 local volume = require("awesome-volume/volume")
+local battery = require("battery/battery")
 require("menu")
 
 -- {{{ Error handling
@@ -241,6 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+			battery_widget,
             volume_widget,
             mytextclock,
             s.mylayoutbox,
