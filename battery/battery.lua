@@ -10,6 +10,7 @@ battery_widget:add(batt_text)
 function update_batt()
 	local fd = io.popen("acpi -b")
 	local status = fd:read("*all")
+	fd:close()
 	local status = status:match(", (%d?%d?%d)")
 	batt_text:set_markup("B:" .. status .. "% ")
 end
