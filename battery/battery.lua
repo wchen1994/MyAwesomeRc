@@ -11,7 +11,7 @@ function update_batt()
 	local fd = io.popen("acpi -b")
 	local status = fd:read("*all")
 	local status = status:match(", (%d?%d?%d)")
-	batt_text:set_markup("bat:" .. status .. "%")
+	batt_text:set_markup("B:" .. status .. "% ")
 end
 
 local mytimer = timer({timeout = 0.2})
